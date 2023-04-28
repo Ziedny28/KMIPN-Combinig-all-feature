@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public GameObject slotPrefab;
-    public static int slotCount=5;
+    public static int slotCount=8;
     public List<InventorySlot> inventorySlots= new List<InventorySlot>(slotCount);
 
     private void OnEnable()

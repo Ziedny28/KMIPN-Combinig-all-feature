@@ -14,19 +14,29 @@ public class Inventory : MonoBehaviour
     private void OnEnable()
     {
         //subscribing to onstuff collected
+
+        //adding
         PVP.OnPVPCollected += Add;
         I2.OnI2Collected+= Add;
         Element1.OnElement1Collected += Add;
         Element2.OnElement2Collected += Add;
+
+        //reduce
+        CraftController.OnReduceItem += Remove;
     }
 
     private void OnDisable()
     {
         //unsubscribing to onstuff collected
+
+        //adding
         PVP.OnPVPCollected -= Add;
         I2.OnI2Collected -= Add;
         Element1.OnElement1Collected -= Add;
         Element2.OnElement2Collected -= Add;
+
+        //reduce
+        CraftController.OnReduceItem -= Remove;
     }
 
     public void Add(ItemData itemData)
