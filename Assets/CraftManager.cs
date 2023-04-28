@@ -14,22 +14,36 @@ public class CraftManager : MonoBehaviour
         //if player clik tab, crafting log will show
         if (Input.GetKeyDown(KeyCode.V))
         {
-            //getting data of what currently in player's inventory
-            Dictionary<string, int> inInventory = GetInventory();
-            string ininventory = "";
-            foreach (var i in inInventory)
-            {
-                ininventory += $"Key: {i.Key}, \tValue:{i.Value}\n";
-            }
-            Debug.Log(ininventory);
+            CheckReactables();
+        }
+    }
 
-            String reaction="";
-            foreach(Reaction r in reactions)
-            {
-                reaction += $"{r.needed}";
-            }
-            Debug.Log(reaction);
+    private void CheckReactables()
+    {
+        //getting data of what currently in player's inventory
+        Dictionary<string, int> inInventory = GetInventory();
 
+        //checking if the inventory contains the items needed
+        foreach (Reaction r in reactions)
+        {
+            //checking each needed stuff
+            List<bool> allResourceAvailable = new List<bool>();
+
+            foreach (string needed in r.needed)
+            {
+                Debug.Log(needed + inInventory.ContainsKey(needed));
+                allResourceAvailable.Add(inInventory.ContainsKey(needed));
+            }
+
+            //if a stuff doesnt available, the reaction shouldnt be possible
+            if (allResourceAvailable.Contains(false))
+            {
+                Debug.Log($"the reaction {r.result.name} not possible");
+            }
+            else
+            {
+                Debug.Log($"the reaction {r.result.name} possible");
+            }
         }
     }
 

@@ -878,7 +878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reactions:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: cda4baf14bb3bae4397b2cdcfc2d2a06, type: 2}
   inventory: {fileID: 533892591}
 --- !u!1 &981465751
 GameObject:

@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e828657479e6b41916332b66905379, type: 3}
   m_Name: Reaction1
   m_EditorClassIdentifier: 
-  needed: []
-  result: {fileID: 0}
+  needed:
+  - Element1
+  - Element2
+  result: {fileID: 11400000, guid: 6878afe10a05ac4488da97956820e902, type: 2}
