@@ -20,9 +20,11 @@ public class Inventory : MonoBehaviour
         I2.OnI2Collected+= Add;
         Element1.OnElement1Collected += Add;
         Element2.OnElement2Collected += Add;
+        Result.OnResultCollected += Add;
+        CraftManager.OnAddItem += Add;
 
         //reduce
-        CraftController.OnReduceItem += Remove;
+        CraftManager.OnReduceItem += Remove;
     }
 
     private void OnDisable()
@@ -34,9 +36,11 @@ public class Inventory : MonoBehaviour
         I2.OnI2Collected -= Add;
         Element1.OnElement1Collected -= Add;
         Element2.OnElement2Collected -= Add;
+        CraftManager.OnAddItem += Add;
 
         //reduce
-        CraftController.OnReduceItem -= Remove;
+
+        CraftManager.OnReduceItem -= Remove;
     }
 
     public void Add(ItemData itemData)

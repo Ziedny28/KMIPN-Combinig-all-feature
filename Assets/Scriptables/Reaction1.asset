@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Reaction1
   m_EditorClassIdentifier: 
   needed:
-  - Element1
-  - Element2
+  - {fileID: 11400000, guid: 58e14305d6f865049ba666415b0137c3, type: 2}
+  - {fileID: 11400000, guid: c65621325a879174ebd0e9ef7b92e5b0, type: 2}
   result: {fileID: 11400000, guid: 6878afe10a05ac4488da97956820e902, type: 2}

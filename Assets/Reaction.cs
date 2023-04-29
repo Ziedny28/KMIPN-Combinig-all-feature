@@ -7,6 +7,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Reaction : ScriptableObject
 {
-    public List<string> needed;
+    public List<ItemData> needed;
     public ItemData result;
 }
