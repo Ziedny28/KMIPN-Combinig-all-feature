@@ -17,16 +17,43 @@ public class CraftManager : MonoBehaviour
     public static event HandleReduceItem OnAddItem;
     public delegate void HandleReduceItem(ItemData itemData);
 
+    public static event HandleReactable OnReactable;
+    public delegate void HandleReactable(Reaction reaction);
+
+    
+    public static event Action closeReactingUI;
+
+
+    bool isOpeningReacting = false;
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            CheckReactables();
+            isOpeningReacting = !isOpeningReacting;
+            //checking if player alredy opening reacting tab
+            if (isOpeningReacting)
+            {
+                ProcessReacting();
+            }
+            if (!isOpeningReacting)
+            {
+                CloseReactableUI();
+            }
+            
         }
     }
 
-    private void CheckReactables()
+    private void CloseReactableUI()
     {
+        closeReactingUI?.Invoke();
+    }
+
+    private void ProcessReacting()
+    {
+        //freeze player's movement
+
         //getting data of what currently in player's inventory in dictionary
         Dictionary<string, int> inInventory = GetInventory();
 
@@ -47,27 +74,13 @@ public class CraftManager : MonoBehaviour
             {
                 Debug.Log($"the reaction {r.result.name} not possible");
             }
+            //if it's possible
             else
             {
                 Debug.Log($"the reaction {r.result.name} possible");
-                Reacting(r);
+                OnReactable?.Invoke(r);
             }
         }
-    }
-
-    private void Reacting(Reaction r)
-    {
-        Debug.Log($"reaksi {r.result.displayName} dimulai");
-        //mengurangi data yang diperlukan
-        foreach (ItemData i in r.needed) 
-        {
-            Debug.Log($"Mengurangi {i.name} dengan 1");
-            OnReduceItem?.Invoke(i);
-        }
-
-        //memberi player hasil
-        OnAddItem?.Invoke(r.result);
-        Debug.Log($"You Got{r.result.displayName}");
     }
 
     private Dictionary<string, int> GetInventory()
@@ -78,5 +91,21 @@ public class CraftManager : MonoBehaviour
             inInventory.Add(i.itemData.name, i.stackSize);
         }
         return inInventory;
+    }
+
+    // dibuat static agar bisa digunakan dari script craft ui
+    public static void Reacting(Reaction r)
+    {
+        Debug.Log($"reaksi {r.result.displayName} dimulai");
+        //mengurangi data yang diperlukan
+        foreach (ItemData i in r.needed)
+        {
+            Debug.Log($"Mengurangi {i.name} dengan 1");
+            OnReduceItem?.Invoke(i);
+        }
+
+        //memberi player hasil
+        OnAddItem?.Invoke(r.result);
+        Debug.Log($"You Got{r.result.displayName}");
     }
 }

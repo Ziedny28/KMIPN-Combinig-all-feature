@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15e828657479e6b41916332b66905379, type: 3}
-  m_Name: Reaction1
+  m_Name: ResultReaction
   m_EditorClassIdentifier: 
   needed:
   - {fileID: 11400000, guid: 58e14305d6f865049ba666415b0137c3, type: 2}
