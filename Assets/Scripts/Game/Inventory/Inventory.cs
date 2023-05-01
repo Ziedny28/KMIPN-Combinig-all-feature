@@ -25,8 +25,6 @@ public class Inventory : MonoBehaviour
 
         //reduce
         CraftManager.OnReduceItem += Remove;
-        Shooting.OnReduceItem += Remove;
-        
     }
 
     private void OnDisable()
@@ -43,7 +41,6 @@ public class Inventory : MonoBehaviour
         //reduce
 
         CraftManager.OnReduceItem -= Remove;
-        Shooting.OnReduceItem -= Remove;
     }
 
     public void Add(ItemData itemData)
