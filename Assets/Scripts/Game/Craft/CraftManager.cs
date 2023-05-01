@@ -13,9 +13,9 @@ public class CraftManager : MonoBehaviour
     public Inventory inventory;
 
     //untuk mengurangi data
-    public static event HandleReduceItem OnReduceItem;
-    public static event HandleReduceItem OnAddItem;
-    public delegate void HandleReduceItem(ItemData itemData);
+    public static event HandleItem OnReduceItem;
+    public static event HandleItem OnAddItem;
+    public delegate void HandleItem(ItemData itemData);
 
     public static event HandleReactable OnReactable;
     public delegate void HandleReactable(Reaction reaction);
@@ -35,10 +35,12 @@ public class CraftManager : MonoBehaviour
             //checking if player alredy opening reacting tab
             if (isOpeningReacting)
             {
+                //Time.timeScale = 0;
                 ProcessReacting();
             }
             if (!isOpeningReacting)
             {
+                //Time.timeScale = 1;
                 CloseReactableUI();
             }
             

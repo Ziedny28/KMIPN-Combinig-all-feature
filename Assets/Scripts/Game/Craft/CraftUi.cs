@@ -53,6 +53,7 @@ public class CraftUi : MonoBehaviour
         //Now destroy them
         foreach (GameObject child in allChildren)
         {
+            child.gameObject.SetActive(false);
             DestroyImmediate(child.gameObject);
         }
 
