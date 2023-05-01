@@ -7,40 +7,42 @@ using UnityEngine;
 
 public class CraftManager : MonoBehaviour
 {
-    [Tooltip("Scriptable object reaction")]
+    [Tooltip("Insert Scriptable object reaction here")]
     public List<Reaction> reactions;
-    [Tooltip("Gameobject attached to inventory")]
+    [Tooltip("Insert Gameobject attached to inventory here")]
     public Inventory inventory;
 
-    //untuk mengurangi data
+    //untuk mengurangi data, terhubung dengan script inventory
     public static event HandleItem OnReduceItem;
     public static event HandleItem OnAddItem;
     public delegate void HandleItem(ItemData itemData);
 
+    //menghandle reaksi, terhubung dengan script craftUi
     public static event HandleReactable OnReactable;
     public delegate void HandleReactable(Reaction reaction);
 
-    
+    //menghandle ketika reacting ui ditutup, terhubung dengan  script craftUi
     public static event Action closeReactingUI;
 
-
-    bool isOpeningReacting = false;
+    bool isOpeningReactingTab = false;
 
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            isOpeningReacting = !isOpeningReacting;
+            isOpeningReactingTab = !isOpeningReactingTab;
             //checking if player alredy opening reacting tab
-            if (isOpeningReacting)
+            if (isOpeningReactingTab)
             {
-                //Time.timeScale = 0;
+                //pause
+                Time.timeScale = 0;
                 ProcessReacting();
             }
-            if (!isOpeningReacting)
+            if (!isOpeningReactingTab)
             {
-                //Time.timeScale = 1;
+                //resume
+                Time.timeScale = 1;
                 CloseReactableUI();
             }
             
@@ -57,27 +59,20 @@ public class CraftManager : MonoBehaviour
         //freeze player's movement
 
         //getting data of what currently in player's inventory in dictionary
-        Dictionary<string, int> inInventory = GetInventory();
+        Dictionary<ItemData, int> inInventory = GetInventory();
 
         //checking if the inventory contains the items needed
         foreach (Reaction r in reactions)
         {
-            //checking each needed stuff
-            List<bool> allResourceAvailable = new List<bool>();
-
-            foreach (ItemData needed in r.needed)
-            {
-                string neededKey = needed.displayName;
-                allResourceAvailable.Add(inInventory.ContainsKey(neededKey));
-            }
+            bool resourceAvailable = CheckNeededResource(r,inInventory);
 
             //if a stuff doesnt available, the reaction shouldnt be possible
-            if (allResourceAvailable.Contains(false))
+            if (!resourceAvailable)
             {
                 Debug.Log($"the reaction {r.result.name} not possible");
             }
             //if it's possible
-            else
+            if(resourceAvailable)
             {
                 Debug.Log($"the reaction {r.result.name} possible");
                 OnReactable?.Invoke(r);
@@ -85,29 +80,54 @@ public class CraftManager : MonoBehaviour
         }
     }
 
-    private Dictionary<string, int> GetInventory()
+    public bool CheckNeededResource(Reaction r, Dictionary<ItemData, int> inInventory)
     {
-        Dictionary<string, int> inInventory = new Dictionary<string, int>();
+        List<bool> allResourceAvailable = new List<bool>();
+
+        foreach (ItemData needed in r.needed)
+        {
+            allResourceAvailable.Add(inInventory.ContainsKey(needed));
+        }
+
+        bool available = !allResourceAvailable.Contains(false);
+
+        return available;
+    }
+
+    public Dictionary<ItemData, int> GetInventory()
+    {
+        Dictionary<ItemData, int> inInventory = new Dictionary<ItemData, int>();
         foreach(InventoryItem i in inventory.inventory) 
         {
-            inInventory.Add(i.itemData.name, i.stackSize);
+            inInventory.Add(i.itemData, i.stackSize);
         }
         return inInventory;
     }
 
     // dibuat static agar bisa digunakan dari script craft ui
-    public static void Reacting(Reaction r)
+    public void Reacting(Reaction r)
     {
-        Debug.Log($"reaksi {r.result.displayName} dimulai");
-        //mengurangi data yang diperlukan
-        foreach (ItemData i in r.needed)
-        {
-            Debug.Log($"Mengurangi {i.name} dengan 1");
-            OnReduceItem?.Invoke(i);
-        }
+        bool resourceAvailable = CheckNeededResource(r, GetInventory());
 
-        //memberi player hasil
-        OnAddItem?.Invoke(r.result);
-        Debug.Log($"You Got{r.result.displayName}");
+        if (resourceAvailable)
+        {
+            Debug.Log($"reaksi {r.result.displayName} dimulai");
+
+            //mengurangi data yang diperlukan
+            foreach (ItemData i in r.needed)
+            {
+                Debug.Log($"Mengurangi {i.name} dengan 1");
+                OnReduceItem?.Invoke(i);
+            }
+
+            //memberi player hasil
+            OnAddItem?.Invoke(r.result);
+            Debug.Log($"You Got{r.result.displayName}");
+        }
+        if (!resourceAvailable)
+        {
+            Debug.Log($"resources not available for {r.result.displayName}");
+        }
+       
     }
 }

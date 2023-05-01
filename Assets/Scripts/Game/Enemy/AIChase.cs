@@ -5,7 +5,7 @@ using UnityEngine;
 public class AIChase : MonoBehaviour
 {
     public GameObject player;
-    public float speed;
+    public float speed=4;
     public float distanceBetween;
 
     private float distance;

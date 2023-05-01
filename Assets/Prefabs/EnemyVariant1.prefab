@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 5
+  speed: 4
   distanceBetween: 5
 --- !u!114 &286951426359783048
 MonoBehaviour:

@@ -8,7 +8,8 @@ using static UnityEditor.Timeline.Actions.MenuPriority;
 public class CraftUi : MonoBehaviour
 {
     public GameObject craftButtonPrefab;
-    
+    public CraftManager craftManager;
+
     private void OnEnable()
     {
         CraftManager.OnReactable += CreateButton;
@@ -31,7 +32,7 @@ public class CraftUi : MonoBehaviour
         newCraftButton.GetComponent<CraftButton>().ChangeText(r.result.displayName);
 
         //creating craft/reacting event
-        newCraftButton.GetComponent<Button>().onClick.AddListener(delegate { CraftManager.Reacting(r); });
+        newCraftButton.GetComponent<Button>().onClick.AddListener(delegate { craftManager.Reacting(r); });
     }
 
 
