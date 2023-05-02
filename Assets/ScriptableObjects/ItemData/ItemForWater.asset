@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7fb010c113c8a943bd8aac1fbb27202, type: 3}
-  m_Name: Element2
+  m_Name: ItemForWater
   m_EditorClassIdentifier: 
-  displayName: Element2
-  description: to make weapon
+  displayName: item for water
+  description: to make water element weapon
   icon: {fileID: 21300000, guid: 11d86c25185632040b44d2259c7bc6df, type: 3}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Element1 : MonoBehaviour, ICollectable
+public class ItemForWater2 : MonoBehaviour, ICollectable
 {
     public static event HandleElement1Collected OnElement1Collected;
     public delegate void HandleElement1Collected(ItemData itemData);

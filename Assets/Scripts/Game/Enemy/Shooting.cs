@@ -7,6 +7,7 @@ public class Shooting : MonoBehaviour
 {
     public Camera mainCam;
     private Vector3 mousePos;
+    //make it array, so its dynamic
     public GameObject bullet;
     public ItemData item;
     public Transform bulletTransform;

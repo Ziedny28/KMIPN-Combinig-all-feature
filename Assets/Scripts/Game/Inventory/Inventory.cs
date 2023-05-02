@@ -14,14 +14,20 @@ public class Inventory : MonoBehaviour
     private void OnEnable()
     {
         //subscribing to onstuff collected
+        //so the item now is listed in inventory
 
         //adding
         PVP.OnPVPCollected += Add;
         I2.OnI2Collected+= Add;
-        Element1.OnElement1Collected += Add;
-        Element2.OnElement2Collected += Add;
+        ItemForWater2.OnElement1Collected += Add;
+        ItemForWater.OnElement2Collected += Add;
         Result.OnResultCollected += Add;
         CraftManager.OnAddItem += Add;
+        Result2.OnResult2Collected+= Add;
+
+        //dynamic
+        ItemForFire.OnItemCollected+= Add;
+        ItemForFire2.OnItemCollected += Add;
 
         //reduce
         CraftManager.OnReduceItem += Remove;
@@ -36,9 +42,15 @@ public class Inventory : MonoBehaviour
         //adding
         PVP.OnPVPCollected -= Add;
         I2.OnI2Collected -= Add;
-        Element1.OnElement1Collected -= Add;
-        Element2.OnElement2Collected -= Add;
-        CraftManager.OnAddItem += Add;
+        ItemForWater.OnElement2Collected -= Add;
+        ItemForWater2.OnElement1Collected -= Add;
+        Result.OnResultCollected -= Add;
+        CraftManager.OnAddItem -= Add;
+        Result2.OnResult2Collected-= Add;
+
+        //dynamic
+        ItemForFire.OnItemCollected-= Add;
+        ItemForFire2.OnItemCollected -= Add;
 
         //reduce
 
