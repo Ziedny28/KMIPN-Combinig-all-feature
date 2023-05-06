@@ -15,9 +15,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _smoothedMovementInput;
     private Vector2 _movementInputSmoothVelocity;
 
+    private Animator anim;
+
     private void Awake()
     {
         _rigidbody= GetComponent<Rigidbody2D>();
+        anim= GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -28,6 +31,15 @@ public class PlayerMovement : MonoBehaviour
             ref _movementInputSmoothVelocity,
             0.1f);
         _rigidbody.velocity = _smoothedMovementInput * _speed;
+
+        if (_movementInput != Vector2.zero)
+        {
+            anim.SetBool("walking", true);
+        }
+        else
+        {
+            anim.SetBool("walking", false);
+        }
     }
 
     private void OnMove(InputValue inputValue)

@@ -38,6 +38,7 @@ public class IEffectable : MonoBehaviour
 
         if(enemy.health < 0)
         {
+            Debug.Log("Destroyed");
             Destroy(gameObject);
         }
     }
