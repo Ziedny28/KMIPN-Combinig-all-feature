@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/ScriptableObjects/ItemData/ItemForFire.asset.meta
 guid: 59ea0efc29fc5a142b3e136a658b6903
+=======
+guid: 3889081d775acc448a7dfe4445d8638a
+>>>>>>> Stashed changes:Assets/Scriptables/Reaction1.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
