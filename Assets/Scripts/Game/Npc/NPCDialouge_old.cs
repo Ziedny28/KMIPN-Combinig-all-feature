@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
@@ -6,21 +5,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NPCDialouge : MonoBehaviour
+public class NPCDialogue_old : MonoBehaviour
 {
-    
+
     public GameObject dialougePanel;
     public TextMeshProUGUI dialogueText;
-
-    public TextMeshProUGUI NpcName;
-
-    
-
-    //make dictionary character:dialouge, ganti data ui tiap dialog
-    //harus urut
-    public NPCData[] npcDatas;
     public string[] dialogue;
-
     private int index=0;
 
     public GameObject continueButton;
@@ -43,7 +33,6 @@ public class NPCDialouge : MonoBehaviour
             else
             {
                 dialougePanel.SetActive(true);
-                UpdateUI(index);
                 StartCoroutine(Typing());
             }
         }
@@ -73,13 +62,11 @@ public class NPCDialouge : MonoBehaviour
 
     public void NextLine()
     {
+
         continueButton.SetActive(false);
         if (index < dialogue.Length - 1)
         {
             index++;
-
-            UpdateUI(index);
-
             dialogueText.text = ""; 
             StartCoroutine(Typing());
         }
@@ -87,11 +74,6 @@ public class NPCDialouge : MonoBehaviour
         {
             ResetText();
         }
-    }
-
-    private void UpdateUI(int idx)
-    {
-        NpcName.text = npcDatas[idx].npcName + " :";
     }
 
 
