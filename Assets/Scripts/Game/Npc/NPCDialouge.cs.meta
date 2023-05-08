@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Scripts/Game/Npc/NPCDialouge.cs.meta
 guid: 02930ddd102aa4747aecb3a4d58009cb
+=======
+guid: 5302524c6194a38438c0e6e2d9f492b4
+>>>>>>> Stashed changes:Assets/CraftManager.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

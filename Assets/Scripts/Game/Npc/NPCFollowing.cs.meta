@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Scripts/Game/Npc/NPCFollowing.cs.meta
 guid: 9f75403b3ad83934cb174e9726e1f451
+=======
+guid: 9423837d6f25f3848a3e9afa20a551d5
+>>>>>>> Stashed changes:Assets/Reaction.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Scripts/Game/Collectable/ItemForFire2.cs.meta
 guid: 898912bd6966d6d469b823292a885657
+=======
+guid: 8bcc47091e5fc7140b314af0b82a87a1
+>>>>>>> Stashed changes:Assets/Scripts/Game/Craft.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
