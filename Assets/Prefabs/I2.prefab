@@ -124,4 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79875785033f614499a18093378b676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  I2Data: {fileID: 11400000, guid: 9b5760354107dff42b652544b3a3c561, type: 2}
+  I2Data: {fileID: 11400000, guid: e1e88fa9182df3d4a907c2278fb039e6, type: 2}

@@ -124,4 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a7cfb8d5aa52d40ab5663ef1b02175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PVPData: {fileID: 11400000, guid: 579991950e098ad41ba37c0786fed79d, type: 2}
+  PVPData: {fileID: 11400000, guid: 6037f003f8099b14dae886fb36c3fb12, type: 2}

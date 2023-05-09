@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Vector3 mousePos;
-    public Camera mainCam;
+    private Camera mainCam;
     private Rigidbody2D rb;
     public float force=7;
 

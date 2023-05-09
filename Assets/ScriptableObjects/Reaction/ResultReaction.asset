@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ResultReaction
   m_EditorClassIdentifier: 
   needed:
-  - {fileID: 11400000, guid: 58e14305d6f865049ba666415b0137c3, type: 2}
-  - {fileID: 11400000, guid: c65621325a879174ebd0e9ef7b92e5b0, type: 2}
-  result: {fileID: 11400000, guid: 6878afe10a05ac4488da97956820e902, type: 2}
+  - {fileID: 11400000, guid: 2dd5c008368d2034280b1d0df5662bf7, type: 2}
+  - {fileID: 11400000, guid: f14ddfc05f55a81449aca58bf16a699c, type: 2}
+  result: {fileID: 11400000, guid: 8b3e560c8e1f8c741a0b9005dd5b7d8e, type: 2}

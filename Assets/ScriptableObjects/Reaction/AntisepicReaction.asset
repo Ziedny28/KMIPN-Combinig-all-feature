@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AntisepicReaction
   m_EditorClassIdentifier: 
   needed:
-  - {fileID: 11400000, guid: 9b5760354107dff42b652544b3a3c561, type: 2}
-  - {fileID: 11400000, guid: 579991950e098ad41ba37c0786fed79d, type: 2}
+  - {fileID: 11400000, guid: e1e88fa9182df3d4a907c2278fb039e6, type: 2}
+  - {fileID: 11400000, guid: 6037f003f8099b14dae886fb36c3fb12, type: 2}
   result: {fileID: 11400000, guid: 78fab9619b7925142bb922f39ba8ae15, type: 2}

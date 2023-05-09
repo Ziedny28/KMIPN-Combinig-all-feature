@@ -18,8 +18,8 @@ public class NPCDialouge : MonoBehaviour
 
     //make dictionary character:dialouge, ganti data ui tiap dialog
     //harus urut
-    public NPCData[] npcDatas;
-    public string[] dialogue;
+
+    public NPCDialogueData npcDialogueData;
 
     private int index=0;
 
@@ -47,7 +47,7 @@ public class NPCDialouge : MonoBehaviour
                 StartCoroutine(Typing());
             }
         }
-        if(dialogueText.text == dialogue[index])
+        if(dialogueText.text == npcDialogueData.dialogue[index])
         {
             continueButton.SetActive(true);
         }
@@ -62,7 +62,7 @@ public class NPCDialouge : MonoBehaviour
 
     IEnumerator Typing()
     {
-        foreach(char letter in dialogue[index].ToCharArray()) 
+        foreach(char letter in npcDialogueData.dialogue[index].ToCharArray()) 
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(wordSpeed);
@@ -74,7 +74,7 @@ public class NPCDialouge : MonoBehaviour
     public void NextLine()
     {
         continueButton.SetActive(false);
-        if (index < dialogue.Length - 1)
+        if (index < npcDialogueData.dialogue.Length - 1)
         {
             index++;
 
@@ -91,7 +91,7 @@ public class NPCDialouge : MonoBehaviour
 
     private void UpdateUI(int idx)
     {
-        NpcName.text = npcDatas[idx].npcName + " :";
+        NpcName.text = npcDialogueData.npcData[idx].npcName + " :";
     }
 
 

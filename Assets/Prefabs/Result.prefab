@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80ead80bc6185c46b4a772478df5c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResultData: {fileID: 11400000, guid: 6878afe10a05ac4488da97956820e902, type: 2}
+  ResultData: {fileID: 11400000, guid: 8b3e560c8e1f8c741a0b9005dd5b7d8e, type: 2}
 --- !u!114 &2530168119354782337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,9 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac7b36c17b9c3f47b2bfd2284249625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCam: {fileID: 0}
   force: 7
-  item: {fileID: 11400000, guid: 6878afe10a05ac4488da97956820e902, type: 2}
+  item: {fileID: 11400000, guid: 8b3e560c8e1f8c741a0b9005dd5b7d8e, type: 2}
 --- !u!96 &2390461005055215587
 TrailRenderer:
   serializedVersion: 2
